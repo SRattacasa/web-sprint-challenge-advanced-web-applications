@@ -13,9 +13,18 @@ useEffect(() => {
   .then(res => {setColorList(res.data)})
   .catch(err => {console.log(err)})
 }, [])
+
+// COPIED FROM MOVIE ASSIGNMENT, EDIT
+const getColor = () => {
+  axiosWithAuth()
+    .get("/colors")
+    .then(res => {setColorList(res.data)})
+    .catch(err => console.log(err.response));
+};
+
   return (
     <>
-      <ColorList colors={colorList} updateColors={setColorList} />
+      <ColorList colors={colorList} updateColors={setColorList} getColor={getColor} />
       <Bubbles colors={colorList} />
     </>
   );
